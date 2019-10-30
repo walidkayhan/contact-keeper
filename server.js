@@ -10,9 +10,10 @@ connectDB();
 //Initialize Middlware
 app.use(express.json({ extended: false }));
 
-app.get('/', (req, res) => {
-	res.json({ msg: 'Welcome to the contact keeper api' });
-});
+//Define Routes
+app.use('/api/users', require('./routes/users'));
+app.use('/api/auth', require('./routes/auth'));
+app.use('/api/contacts', require('./routes/contacts'));
 
 //Serve Static Assets in Production
 if (process.env.NODE_ENV === 'production') {
